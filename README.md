@@ -72,7 +72,6 @@ php artisan test
 ```
 
 ## 📸 Screenshots (Optional)
-You can add real screenshots here after deployment:
 
 - **Dashboard**
 - **Patient List**
