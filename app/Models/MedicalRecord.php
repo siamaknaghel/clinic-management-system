@@ -18,6 +18,11 @@ class MedicalRecord extends Model
         'files',
     ];
 
+    public function getHasFilesAttribute(): bool
+    {
+        return ! empty($this->files);
+    }
+
     protected $casts = [
         'files' => 'array',
     ];
