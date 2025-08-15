@@ -24,7 +24,7 @@ class PermissionResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()?->can('manage-permissions');
+        return auth()->user()?->can('manage-permission');
     }
 
     public static function form(Schema $schema): Schema

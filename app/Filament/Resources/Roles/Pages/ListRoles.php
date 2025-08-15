@@ -20,7 +20,7 @@ class ListRoles extends ListRecords
     {
         parent::authorizeAccess();
 
-        abort_unless(auth()->user()->can('manage-roles'), 403);
+        abort_unless(auth()->user()->can('manage-role'), 403);
     }
 
 }

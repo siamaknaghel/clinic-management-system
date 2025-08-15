@@ -22,6 +22,6 @@ class ListPermissions extends ListRecords
     {
         $user = auth()->user();
 
-        return $user?->can('manage-permissions') ?? false;
+        return $user?->can('manage-permission') ?? false;
     }
 }

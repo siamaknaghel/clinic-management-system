@@ -25,7 +25,7 @@ class ListUsers extends ListRecords
     {
         parent::authorizeAccess();
 
-        abort_unless(auth()->user()->can('manage-users'), 403);
+        abort_unless(auth()->user()->can('manage-user'), 403);
     }
 
 }

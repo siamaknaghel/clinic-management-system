@@ -24,7 +24,7 @@ class RoleResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()?->can('manage-roles');
+        return auth()->user()?->can('manage-role');
     }
 
     public static function form(Schema $schema): Schema
