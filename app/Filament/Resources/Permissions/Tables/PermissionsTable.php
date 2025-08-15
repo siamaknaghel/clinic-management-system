@@ -30,7 +30,7 @@ class PermissionsTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
-                    ->authorize(fn ($record) => auth()->user()->can('update-permission', $record)),
+                    ->authorize(fn ($record) => auth()->user()->can('delete-permission', $record)),
                 ]),
             ]);
     }
