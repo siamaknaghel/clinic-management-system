@@ -1,138 +1,87 @@
-# Laravel Filament Starter Kit
+# Clinic Management System
 
-A professional, secure, and reusable foundation for building modern Laravel applications with Filament Admin Panel.
+A modern, admin-ready clinic management system built with **Laravel 12** and **Filament 4**.
 
-Perfect for projects like travel platforms, clinics, HR systems, inventory management, and any admin-heavy application.
+Manage patients, doctors, appointments, and medical records with a clean, secure, and professional interface — perfect for freelancers, clinics, or SaaS products.
 
-Built with:
-- 🔧 Laravel 12
-- 🎨 Filament 4
-- 🔐 `spatie/laravel-permission` (Roles & Permissions)
-- ✅ Email verification, password reset, full authentication
-- 📁 Clean, scalable folder structure
-- 🐳 Sail-ready (Docker)
+![Filament Admin Panel](https://filamentphp.com/images/filament-v4-preview.png) *Example UI (replace with your own screenshot later)*
 
----
+## ✨ Features
 
-## 🛠 Technologies
+- **Patient Management**: Full CRUD for patient records with search and filters
+- **Doctor Management**: Store specialties, fees, and contact details
+- **Appointment Scheduling**: Date/time selection with conflict prevention
+- **Medical Records**: Rich text notes, diagnosis, prescriptions, and file uploads (PDF, images)
+- **Role-Based Access Control**: Admin, receptionist, doctor permissions via Spatie
+- **Interactive Dashboard**: Real-time analytics with monthly revenue chart and upcoming appointments
+- **Responsive Design**: Works perfectly on desktop and mobile
+- **Upwork-Ready**: Clean code, English UI, and professional documentation
 
-| Technology | Version |
-|----------|---------|
-| Laravel | ^12.0 |
-| Filament | ^4.0 |
-| PHP | ^8.2 |
-| spatie/laravel-permission | ^6.0 |
-| Composer | ^2.5 |
+## 🛠 Tech Stack
 
----
+- **Framework**: Laravel 12
+- **Admin Panel**: Filament 4
+- **Authorization**: Spatie Laravel Permission
+- **Charts**: Flowframe Laravel Trend + Chart.js
+- **Database**: MySQL
+- **Frontend**: Tailwind CSS, Alpine.js
+- **File Storage**: Laravel Filesystem (public disk)
 
-## 📦 Installation
+## 🚀 Installation
 
-### 1. Clone the project
 ```bash
-git clone git@github.com:siamaknaghel/laravel-filament-starter-kit.git my-project
-cd my-project
-```
+# Clone the repository
+git clone https://github.com/yourname/clinic-management-system.git
+cd clinic-management-system
 
-### 2. Install dependencies
-```bash
+# Install PHP dependencies
 composer install
+
+# Install JavaScript dependencies
 npm install && npm run build
-```
 
-### 3. Configure environment
-```bash
+# Create .env file and generate key
 cp .env.example .env
-```
-
-> Edit `.env` and set your `DB_*`, `MAIL_*`, and other environment variables.
-
-### 4. Generate app key and run migrations
-```bash
 php artisan key:generate
+
+# Configure your database in .env
+DB_DATABASE=clinic_management_system
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Run migrations and seed the database
 php artisan migrate --seed
+
+# Create storage link
+php artisan storage:link
 ```
 
-### 5. Start the server
-```bash
-php artisan serve
-```
+## 🔐 Admin Access
 
-> 🔗 Admin Panel: [http://localhost:8000/admin](http://localhost:8000/admin)
+After seeding, use the following credentials to log in:
 
----
+- **Email**: `admin@admin.com`
+- **Password**: `password123!`
 
-## 🔐 Authentication & Authorization
-
-### ✅ Email Verification
-- Enabled by default.
-- Users must verify email to access the admin panel.
-
-### ✅ Password Reset
-- Built-in via Laravel and Filament.
-
-### ✅ Roles & Permissions
-- Powered by [`spatie/laravel-permission`](https://spatie.be/docs/laravel-permission).
-- Predefined roles: `admin`, `staff`, `user`
-- Example permissions: `manage-bookings`, `view-reports`, `manage-users`
-
-#### Assign role in Tinker:
-```bash
-php artisan tinker
->>> $user = App\Models\User::first();
->>> $user->assignRole('admin');
-```
-
----
-
-## 🧩 Folder Structure
-```bash
-app/
-├── Models/
-├── Actions/ # Complex business logic
-├── Services/ # Reusable service classes
-├── Observers/ # Model event listeners
-├── Enums/ # Status constants (e.g., BookingStatus)
-├── Policies/ # Authorization logic
-└── Filament/ # Admin panel resources, pages, widgets
-```
-
-
-This structure ensures scalability, testability, and reusability across all your projects.
-
----
-
-## 🧑‍💼 Default Admin User (for testing)
-
-| Field | Value |
-|------|-------|
-| Email | admin@example.com |
-| Password | password |
-
-> After login, verify the email via Mailpit or your configured mail driver.
-
----
+You will be redirected to the admin panel: [`/admin`](/admin)
 
 ## 🧪 Testing
 
-Run tests:
 ```bash
 php artisan test
 ```
 
-Run with coverage:
-```bash
-php artisan test --coverage
-```
+## 📸 Screenshots (Optional)
+You can add real screenshots here after deployment:
 
----
+- **Dashboard**
+- **Patient List**
+- **Appointment Form**
+- **Medical Record with File Upload**
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
-
----
+Pull requests are welcome! Please follow Laravel and Filament best practices.
 
 ## 📄 License
-
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License — feel free to use in personal or commercial projects.
