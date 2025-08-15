@@ -47,40 +47,37 @@ class MedicalRecordInfolist
             Section::make('Attachments')
     ->schema([
         TextEntry::make('file_list')
-    ->label('Attachments')
-    ->getStateUsing(fn ($record) => $record->files) // برای اولین بار درست می‌خونه
-    ->formatStateUsing(function ($state) {
-        // حالا $state ممکنه رشته، JSON یا آرایه باشه — ما همه حالت‌ها رو پوشش می‌دیم
+            ->label('Attachments')
+            ->getStateUsing(fn ($record) => $record->files)
+            ->formatStateUsing(function ($state) {
+                if (empty($state)) {
+                    return '<span class="text-gray-500">No files attached.</span>';
+                }
 
-        if (empty($state)) {
-            return '<span class="text-gray-500">No files attached.</span>';
-        }
+                $files = [];
 
-        $files = [];
+                if (is_array($state)) {
+                    $files = array_filter($state);
+                } else {
+                    $decoded = json_decode($state, true);
+                    if (is_array($decoded)) {
+                        $files = array_filter($decoded);
+                    } else {
+                        $files = array_filter([$state]);
+                    }
+                }
 
-        if (is_array($state)) {
-            $files = array_filter($state);
-        } else {
-            // اگر رشته باشه
-            $decoded = json_decode($state, true);
-            if (is_array($decoded)) {
-                $files = array_filter($decoded);
-            } else {
-                $files = array_filter([$state]);
-            }
-        }
+                if (empty($files)) {
+                    return '<span class="text-gray-500">No files attached.</span>';
+                }
 
-        if (empty($files)) {
-            return '<span class="text-gray-500">No files attached.</span>';
-        }
-
-        return view('filament.components.infolists.file-list', [
-            'files' => $files,
-        ])->render();
-    })
-    ->html()
-    ->visible(fn ($record) => ! empty($record->files)),
-    ]),
+                return view('filament.components.infolists.file-list', [
+                    'files' => $files,
+                ])->render();
+            })
+            ->html()
+            ->visible(fn ($record) => ! empty($record->files)),
+            ]),
         ]);
     }
 }

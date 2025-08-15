@@ -13,7 +13,13 @@ class ListPatients extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()->authorize(fn () => auth()->user()->can('create-patient')),
         ];
+    }
+    protected function authorizeAccess(): void
+    {
+        parent::authorizeAccess();
+
+        abort_unless(auth()->user()->can('manage-patient'), 403);
     }
 }
